@@ -22,9 +22,9 @@ namespace THK {
 
     //nice big list of servos for the block to use. These represent register offsets in the PCA9865
     export enum Servos {
-        モーター1 = 0x08,
-        モーター2 = 0x0C,
-        モーター3 = 0x10,
+        モータ1 = 0x08,
+        モータ2 = 0x0C,
+        モータ3 = 0x10,
         /*SV4 = 0x14,
         SV5 = 0x18,
         SV6 = 0x1C,
