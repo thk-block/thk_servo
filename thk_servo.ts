@@ -1,5 +1,6 @@
 /**
  * Blocks for driving the Kitronik I2C 16-Servo Driver Board
+ * 回転方向反転 + パルス調整用
  */
 //% weight=150 color=#de3b09 icon="\uf085" block="サーボモータ"
 
@@ -129,11 +130,11 @@ namespace THK {
             secretIncantation()
         }
 
-        degrees = degrees - 90 //-180～0度
+        degrees = degrees - 110 //-200～-20度
         degrees = -degrees //反転（時計周りを＋にするため)
 
-        if (degrees < 1) { //0°でモータが震えるため
-            degrees = 1
+        if (degrees < 21) { //0°でモータが震えるため
+            degrees = 21
         }
 
         let buf = pins.createBuffer(2)
