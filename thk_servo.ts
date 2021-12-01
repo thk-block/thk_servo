@@ -132,7 +132,7 @@ namespace THK {
 
         degrees = degrees - 110 //-200～-20度
         degrees = -degrees //反転（時計周りを＋にするため)
-
+                           //20～200度
         if (degrees < 21) { //0°でモータが震えるため
             degrees = 21
         }
