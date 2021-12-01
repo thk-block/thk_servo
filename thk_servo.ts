@@ -119,7 +119,7 @@ namespace THK {
     }
 
    //% blockId=Kitronik_bairitu
-    //% block="パルスの倍率=%degrees"
+    //% block="パルスの倍率=%bairitu"
     /**
  * @param bairitu describe parameter here, eg: 80
 */
@@ -129,8 +129,8 @@ namespace THK {
 
 
     //% blockId=Kitronik_chousei
-    //% block="原点を %degrees|度ずらす"
-    //% degrees.min=-90 degrees.max=90
+    //% block="原点を %genten_temp|度ずらす"
+    //% genten_temp.min=-90 genten_temp.max=90
     
     export function gentenchousei(genten_temp: number): void {
         genten = genten_temp
