@@ -20,6 +20,7 @@ namespace THK {
 
     let initalised = false //a flag to allow us to initialise without explicitly calling the secret incantation
     let keisuu_setting = 80 //旧モータ係数設定用　今は未使用　
+    let genten = 0
 
     //nice big list of servos for the block to use. These represent register offsets in the PCA9865
     export enum Servos {
@@ -117,6 +118,24 @@ namespace THK {
         initalised = true
     }
 
+   //% blockId=Kitronik_bairitu
+    //% block="パルスの倍率=%degrees"
+    /**
+ * @param bairitu describe parameter here, eg: 80
+*/
+    export function bairitu(bairitu: number): void {
+        keisuu_setting = bairitu
+    }
+
+
+    //% blockId=Kitronik_chousei
+    //% block="原点を %degrees|度ずらす"
+    //% degrees.min=-90 degrees.max=90
+    
+    export function gentenchousei(genten_temp: number): void {
+        genten = genten_temp
+        }
+
     //% blockId=Kitronik_servo
     //% block="%Servo|を %degrees|度にする"
     //% degrees.min=-90 degrees.max=90
@@ -130,16 +149,17 @@ namespace THK {
             secretIncantation()
         }
 
-        degrees = degrees - 110 //-200～-20度
+        degrees = degrees + genten //-200～-20度
         degrees = -degrees //反転（時計周りを＋にするため)
-                           //20～200度
-        if (degrees < 21) { //0°でモータが震えるため
-            degrees = 21
-        }
+                           
+        //if (degrees < 21) { //0°でモータが震えるため
+        //    degrees = 21
+
+        //}
 
         let buf = pins.createBuffer(2)
         let HighByte = false
-        let deg100 = degrees * 80 //元は100
+        let deg100 = degrees * keisuu_setting //元は100
         let PWMVal100 = deg100 * ServoMultiplier
         let PWMVal = PWMVal100 / 10000
 
