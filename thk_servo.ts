@@ -149,9 +149,9 @@ namespace THK {
             secretIncantation()
         }
 
-        degrees = degrees + genten //-200～-20度
+        degrees = degrees - 90 //-180～0度
         degrees = -degrees //反転（時計周りを＋にするため)
-                           
+        degrees = degrees + genten
         //if (degrees < 21) { //0°でモータが震えるため
         //    degrees = 21
 
